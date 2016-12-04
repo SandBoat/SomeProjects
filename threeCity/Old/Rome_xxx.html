@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<title>Rome</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<body>
+
+<div class="w3-container">
+    <div style="text-align: center;"><h1>Rome's Attractions</h1></div>
+  </div>
+    
+<div class="w3-content w3-display-container">
+
+<a class="w3-btn-floating w3-hover-dark-grey w3-display-left" onclick="plusDivs(-1)">&#10094;</a>
+<a class="w3-btn-floating w3-hover-dark-grey w3-display-right" onclick="plusDivs(1)">&#10095;</a>
+
+<div class="w3-display-container mySlides">
+<div style="text-align: center;"><a
+ href="http://www.rome.info/colosseum/">
+<h2>Colosseum</h2>
+</a></div>
+    <a href="http://www.rome.info/colosseum/"><img src=img/Colosseum.jpg style="width:100%"></a>
+  <div class="w3-display-bottommleft w3-large w3-container w3-padding-16 w3-black">
+    <a href="http://www.rome.info/colosseum/">The most beautiful and expensive Hotel</a>
+  </div>
+</div>
+
+<div class="w3-display-container mySlides">
+<div style="text-align: center;"><a
+ href="http://www.trevifountain.net/">
+<h2>Trevi Fountain</h2>
+</a></div>
+    <a href="http://www.trevifountain.net/"><img src=img/trevifountain.jpg style="width:100%"></a>
+  <div class="w3-display-bottommleft w3-large w3-container w3-padding-16 w3-black">
+    <a href="http://www.trevifountain.net/">The biggest Mosque in the world</a>
+  </div>
+</div>
+
+<div class="w3-display-container mySlides">
+<div style="text-align: center;"><a
+ href="http://mv.vatican.va/">
+<h2>Vatican Museum</h2>
+</a></div>
+    <a href="http://mv.vatican.va/"> <img src=img/vaticanmuseum.jpg style="width:100%"></a>
+  <div class="w3-display-bottommleft  w3-large w3-container w3-padding-16 w3-black">
+    <a href="http://mv.vatican.va/">The best mall in the area</a>
+  </div>
+</div>
+
+</div>
+
+<p align="center">
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+</script>
+<a href="HomePage_xx.html" title="home" class="bottom-btn home-btn">
+<img src="img/home.png" width="36" height="38"></a>
+</p>
+</body>
+</html>

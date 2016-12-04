@@ -1,4 +1,4 @@
-/************************************   reset.css  ***********************************/
+﻿/************************************   reset.css  ***********************************/
 
 body,
 div,
@@ -84,23 +84,9 @@ acronym {
 /************************************   common  ***********************************/
 
 body {
-    background: #fff;
+    background: #f7f4f2;
     font-family: "Microsoft YaHei", "微软雅黑", SimSun, "宋体";
     font-size: 14px;
-}
-
-.clearfix:before {
-    display: table;
-    content: " ";
-}
-
-.clearfix:after {
-    content: " ";
-    clear: both;
-    display: block;
-    height: 0;
-    width: 0;
-    visibility: hidden;
 }
 
 
@@ -108,7 +94,7 @@ body {
 
 .header {
     width: 100%;
-    background: #f7f4f2;
+    background-color: #f5f5f5;
     border-bottom: 1px solid #ddd;
 }
 
@@ -116,8 +102,31 @@ body {
 /************************************   content  ***********************************/
 
 .content {
-    width: 1040px;
+    width: 1120px;
     margin: 20px auto;
+}
+
+.city-content {
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.city-content-wrap:after {
+    content: '';
+    clear: both;
+}
+
+.city-content-left {
+    float: left;
+    box-sizing: border-box;
+    width: 700px;
+    padding-right: 50px;
+}
+
+.city-content-right {
+    float: left;
+    width: 400px;
+    height: 300px;
 }
 
 .city-name {
@@ -133,9 +142,12 @@ body {
 }
 
 .city-map {
-    width: 900px;
-    height: 600px;
-    margin: 20px auto;
+    width: 100%;
+    height: 100%;
+}
+
+.city-map:hover img {
+    box-shadow: 2px 2px 4px #a3a2a5;
 }
 
 .city-map img {
@@ -157,7 +169,9 @@ body {
     padding: 20px;
     color: #fff;
 }
-
+.email p{
+    text-align: center;
+}
 .bottom-btn {
     position: fixed;
     width: 40px;
@@ -190,11 +204,10 @@ body {
 /************************************   轮播  ***********************************/
 
 .city_pic-wrap {
-    width: 1140px;
-    height: 570px;
+    width: 100%;
+    height: 560px;
     margin: 10px auto;
     overflow: hidden;
-    background-color: #fff;
 }
 
 .city_pic {
@@ -204,17 +217,21 @@ body {
     width: 920px;
     height: 100%;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .city_pic .city_pic-btn {
     z-index: 999;
     position: absolute;
-    width: 64px;
+    width: 60px;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.4);
 }
 
 .city_pic .city_pic-btn:hover {
+    position: absolute;
+    width: 60px;
+    height: 100%;
     background-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -247,12 +264,12 @@ body {
 
 .city_pic .city_pic-pre {
     top: 0;
-    left: -110px;
+    left: -0;
 }
 
 .city_pic .city_pic-next {
     top: 0;
-    right: -110px;
+    right: 0;
 }
 
 .city_pic .city_pic-detaile {
@@ -272,7 +289,6 @@ body {
 .city_pic .city_pic-detaile[data-index="1"] {
     z-index: 222;
     left: 0;
-    transform: scale(1.1);
 }
 
 .city_pic .city_pic-detaile[data-index="2"] {
@@ -280,20 +296,38 @@ body {
     left: 100%;
 }
 
-@keyframs city-pic_0 {
-    from {
-        left: -200%;
-    }
-    to {
-        left: -100%;
-    }
-}
-
 .city_pic .city_pic-detaile img {
     width: 100%;
     height: 100%;
 }
 
+.city-content-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
 .city-content {
-    transition: all 1s ease;
+    position: absolute;
+    top: 200px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.city-content[data-index="1"] {
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: all 1.5s ease;
+    transition-delay: 0.5s;
+}
+
+.vintage {
+    color: transparent;
+    background-color: black;
+    text-shadow: rgba(255, 255, 255, 0.5) 0 5px 6px, rgba(255, 255, 255, 0.2) 1px 3px 3px;
+    -webkit-background-clip: text;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }

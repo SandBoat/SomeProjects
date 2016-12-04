@@ -22,10 +22,10 @@
             pic_detatils[i].setAttribute("data-index", nextIndex);
             if (pic_contents.length > 0) {
                 pic_contents[i].setAttribute("data-index", nextIndex);
-                if (nextIndex == 1) {
-                    height = pic_contents[i].style.height || pic_contents[i].offsetHeight;
-                    pic_contents[i].parentNode.style.height = height + 'px';
-                }
+                // if (nextIndex == 1) {
+                //     height = pic_detatils[i].style.height || pic_detatils[i].offsetHeight;
+                //     pic_detatils[i].parentNode.style.height = height + 'px';
+                // }
             }
         }
     }
