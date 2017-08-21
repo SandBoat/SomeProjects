@@ -1,0 +1,102 @@
+.table {
+    display: table;
+}
+
+.thead{
+    display: table-header-group;
+}
+
+.tbody{
+    display: table-row-group;
+}
+
+.tr {
+    display: table-row;
+    padding: 4px 0;
+}
+
+.th {
+    font-weight: bold;
+}
+
+.th.active {
+    /*color: red;*/
+}
+
+.th.active:after {
+    content: ' ';
+    display: inline-block;
+    margin-left: 5px;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+}
+
+.th.active.asc:after {
+    border-top-color: #000;
+}
+
+.th.active.desc:after {
+    border-bottom-color: #000;
+}
+
+.th,
+.td {
+    display: table-cell;
+    min-width: 100px;
+    max-width: 200px;
+    padding: 2px;
+    border-bottom:1px solid #bbb;
+    text-align: left;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 2px;
+    text-decoration: underline;
+}
+
+.btn:hover {
+    color: red;
+}
+
+
+/************************************ TableEdit ************************************/
+
+.edit {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.edit-block {
+    box-sizing: border-box;
+    width: 33.33333333%;
+    margin: 20px 0;
+    padding: 0 10px;
+}
+
+.edit-block-label {
+    display: block;
+    float: left;
+    width: 30%;
+    margin: 0;
+}
+
+.edit-block-input {
+    display: block;
+    float: left;
+    width: 70%;
+}
+
+.edit-block-input input {
+    display: block;
+    width: 100%;
+    padding: 4px;
+}
+
+.operate-btn {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 4px;
+    border: 1px solid #000;
+}
