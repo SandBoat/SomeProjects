@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="file" id="image">
+  <div>base64: <span id="base64"></span></div>
+  <div>base64 to img</span>: <img id="base64ToImg"></img></div>
+  <script>
+    window.onload = function () {
+      const $imgInput = document.querySelector('#image');
+      const $textBase64 = document.querySelector('#base64');
+      const $base64ToImg = document.querySelector('#base64ToImg');
+ 
+      $imgInput.addEventListener('change', function () {
+        var reader = new FileReader();
+        var AllowImgFileSize = 2100000; //上传图片最大值(单位字节)（ 2 M = 2097152 B ）超过2M上传失败
+        var file = $imgInput.files[0];
+        var imgUrlBase64;
+        if (file) {
+          //将文件以Data URL形式读入页面  
+          imgUrlBase64 = reader.readAsDataURL(file);
+          reader.onload = function (e) {
+            //var ImgFileSize = reader.result.substring(reader.result.indexOf(",") + 1).length;//截取base64码部分（可选可不选，需要与后台沟通）
+            if (AllowImgFileSize != 0 && AllowImgFileSize < reader.result.length) {
+              alert('上传失败，请上传不大于2M的图片！');
+              return;
+            } else {
+              $textBase64.innerText = reader.result;
+              $base64ToImg.src = reader.result;
+            }
+          }
+        }
+      });
+    };
+  </script>
+</body>
+
+</html>
