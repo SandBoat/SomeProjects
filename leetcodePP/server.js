@@ -1,41 +1,36 @@
-/**
- * leetcode 题库抓取
+/*
+ * @Description: leetcode 题库抓取
+ * @Author: ymt<mengtao.yan@hand-china.com>
+ * @Version: 1.0.0
+ * @Date: 2019-12-30 19:35:01
+ * @LastEditors  : ymt
+ * @LastEditTime : 2020-01-01 17:02:47
+ * @Copyright: Copyright (c) 2019, Hand
  */
-const fs = require('fs');
-const puppeteer = require('puppeteer');
-const LEETCODE_URL = 'https://leetcode-cn.com/problemset/all/';
-const TARGET_REQUEST_URL = 'https://leetcode-cn.com/graphql'; // 目标请求url
-const TARGET_FILE = './result/result.json'; // 数据存放文件
+const { get } = require("lodash");
+const { readTemplate, write } = require("./script/io");
+const { getAllProblem, getProblemDetail } = require("./script/request");
 
-const writeFile = (data, fileName = 'xx.html') => {
-    try {
-        writerStream = fs.createWriteStream(fileName);
-        writerStream.write(JSON.stringify(data), 'utf-8');
-        writerStream.end();
-    } catch (err) {
-        console.error(err);
-    }
-}
+const DATA_PATH = "./result/";
 
 (async () => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.on('response', responsey => {
-        if (responsey.url() === TARGET_REQUEST_URL) { // 拦截目标请求结果
-            responsey.text().then(ret => {
-                try {
-                    ret = JSON.parse(ret);
-                    if (ret.data.translations) {
-                        writeFile(ret.data.translations.map(t => t.title), TARGET_FILE);
-                        console.log('抓取结束...................');
-                        browser.close();
-                    }
-                } catch (err) {
-                    console.error(err);
-                }
-            });
-        }
+  // 初始化读取模板
+  readTemplate();
+  // 获取全部题目
+  getAllProblem().then(all => {
+    all.slice(0, 10).forEach(({ title_slug, title, index }) => {
+      getProblemDetail(title_slug).then(({ name, content }) => {
+        const fileName = `NO_${index}_${name}.md`;
+
+        write(
+          {
+            title: title,
+            content: content
+          },
+          DATA_PATH,
+          fileName
+        );
+      });
     });
-    await page.goto(LEETCODE_URL); // 访问题库页面
-    // await browser.close();
+  });
 })();
